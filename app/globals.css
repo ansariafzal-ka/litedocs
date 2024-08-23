@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../styles/dark-theme.css";
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -84,7 +86,13 @@
   .btn_danger {
     @apply bg-gradient-to-r from-red-700 to-red-500;
   }
+  .btn_dark {
+    @apply bg-black flex justify-center items-center hover:bg-neutral-950 duration-300;
+  }
+  .btn_outline {
+    @apply border border-gray-800 hover:bg-black hover:border-black duration-300;
+  }
   .input {
-    @apply bg-[#020E1C] px-4 py-2 border-none outline-none rounded-md;
+    @apply w-full bg-[#020E1C] px-4 py-2 outline-none rounded-md border border-gray-800;
   }
 }

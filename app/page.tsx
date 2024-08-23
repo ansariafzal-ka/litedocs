@@ -1,39 +1,20 @@
-import NavBar from "@/components/NavBar";
-import DocumentCard from "@/components/utils/DocumentCard";
-import { Plus } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
 const page = () => {
   return (
-    <main className="p-5 min-w-full min-h-screen bg-[#020E1C]">
-      <NavBar />
-      <div className="w-full my-8 flex justify-between items-center">
-        <h1 className="text-xl font-medium">All documents</h1>
-        <button className="btn btn_primary text-sm flex justify-center items-center gap-2">
-          <Plus width={22} height={22} />
-          <span className="hidden sm:block">Start a new Document</span>
-        </button>
-      </div>
-      <div className="w-full flex flex-col gap-3">
-        <DocumentCard
-          title="Tips and Tricks for CSS.."
-          createdAt="Created about 1 Day ago"
-        />
-        <DocumentCard
-          title="Tips and Tricks for HTML.."
-          createdAt="Created about 2 Day ago"
-        />
-        <DocumentCard
-          title="Tips and Tricks for Tailwind.."
-          createdAt="Created about 3 Day ago"
-        />
-        <DocumentCard
-          title="Tips and Tricks for Next.js.."
-          createdAt="Created about 8 Day ago"
-        />
-        <DocumentCard
-          title="Tips and Tricks for Next.js.."
-          createdAt="Created about 8 Day ago"
-        />
+    <main className="w-full h-screen bg-[#020E1C] flex justify-center items-center">
+      <div className="w-[325px] md:w-fit text-center flex flex-col gap-3 bg_secondary p-5 rounded-md">
+        <div className="md:w-[400px] text-center">
+          <h1 className="mb-2 text-xl font-medium">Welcome to LiteDocs</h1>
+          <p className="text-muted-foreground">
+            your goto platform for creating awesome text documents
+          </p>
+        </div>
+        <Link href="/documents" type="button" className="btn btn_dark">
+          <img src="google.svg" alt="google-logo" className="w-5 h-5 me-2" />
+          Continue with Google
+        </Link>
       </div>
     </main>
   );
