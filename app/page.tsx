@@ -1,20 +1,25 @@
-import Link from "next/link";
-import React from "react";
+import GoogleLoginButton from "@/components/utils/GoogleLoginButton";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-const page = () => {
+const page = async () => {
+  const session = await getServerSession();
+  console.log(session, "session");
+
+  if (session) {
+    redirect("/documents");
+  }
+
   return (
     <main className="w-full h-screen bg-[#020E1C] flex justify-center items-center">
-      <div className="w-[325px] md:w-fit text-center flex flex-col gap-3 bg_secondary p-5 rounded-md">
-        <div className="md:w-[400px] text-center">
+      <div className="w-[325px] sm:w-fit text-center flex flex-col gap-3 bg_secondary p-5 rounded-md">
+        <div className="sm:w-[400px] text-center">
           <h1 className="mb-2 text-xl font-medium">Welcome to LiteDocs</h1>
           <p className="text-muted-foreground">
             your goto platform for creating awesome text documents
           </p>
         </div>
-        <Link href="/documents" type="button" className="btn btn_dark">
-          <img src="google.svg" alt="google-logo" className="w-5 h-5 me-2" />
-          Continue with Google
-        </Link>
+        <GoogleLoginButton />
       </div>
     </main>
   );

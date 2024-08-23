@@ -35,7 +35,7 @@ export function Editor() {
       <div className="editor-container size-full">
         <ToolbarPlugin />
 
-        <div className="editor-inner h-full md:min-h-[550px] max-h-[550px] overflow-auto">
+        <div className="editor-inner h-[500px] md:max-h-[550px] overflow-auto">
           <RichTextPlugin
             contentEditable={
               <ContentEditable className="editor-input text-white h-full" />

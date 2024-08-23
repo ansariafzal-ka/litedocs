@@ -4,7 +4,7 @@ import NewDocumentModal from "@/components/utils/NewDocumentModal";
 
 const page = () => {
   return (
-    <main className="p-5 lg:px-28 lg:py-5 min-w-full min-h-screen bg-[#020E1C] flex flex-col justify-start items-center">
+    <main className="p-5 lg:px-28 min-w-full min-h-screen bg-[#020E1C] flex flex-col justify-start items-center">
       <NavBar />
       <div className="w-full my-8 flex justify-between items-center">
         <h1 className="text-xl font-medium">All documents</h1>
