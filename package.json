@@ -11,7 +11,7 @@
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
-    "axios": "^1.7.4",
+    "axios": "^1.7.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "jsm-editor": "^0.0.12",

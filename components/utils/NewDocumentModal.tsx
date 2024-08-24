@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -5,10 +7,37 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
+import axios from "axios";
 import { Plus } from "lucide-react";
+import { FormEvent, useState } from "react";
 
-const NewDocumentModal = () => {
+interface NewDocumentModalProps {
+  onCreate: (newDocument: any) => void;
+}
+
+const NewDocumentModal = ({ onCreate }: NewDocumentModalProps) => {
+  const [documentTitle, setDocumentTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/v1/document", {
+        documentTitle: documentTitle,
+        description: description,
+      });
+      if (response.status === 201) {
+        onCreate(response.data.newDocument);
+        setDocumentTitle("");
+        setDescription("");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -24,14 +53,30 @@ const NewDocumentModal = () => {
             Kindly fill in the below fields to start a new document.
           </DialogDescription>
         </DialogHeader>
-        <form className="w-full flex flex-col justify-center items-start gap-2">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full flex flex-col justify-center items-start gap-2"
+        >
           <label>Document title</label>
-          <input type="text" className="input" required />
+          <input
+            type="text"
+            className="input"
+            value={documentTitle}
+            onChange={(e) => setDocumentTitle(e.target.value)}
+            required
+          />
           <label>Description</label>
-          <textarea className="input" required />
-          <button type="submit" className="mt-3 btn btn_primary">
-            create
-          </button>
+          <textarea
+            className="input"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+          <DialogClose asChild>
+            <button type="submit" className="mt-3 btn btn_primary">
+              create
+            </button>
+          </DialogClose>
         </form>
       </DialogContent>
     </Dialog>

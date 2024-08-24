@@ -2,10 +2,14 @@
 import { signIn } from "next-auth/react";
 
 const GoogleLoginButton = () => {
-  const signInHandler = () => {
-    signIn("google", {
-      callbackUrl: "/documents",
-    });
+  const signInHandler = async () => {
+    try {
+      await signIn("google", {
+        callbackUrl: "/documents",
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <button

@@ -21,7 +21,6 @@ const NavBar = () => {
           <AvatarImage src={session.data?.user?.image || ""} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-
         <button
           onClick={logoutHandler}
           className="btn btn_outline flex justify-center items-center gap-2 "
