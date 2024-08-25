@@ -37,14 +37,13 @@ export const POST = async (request: NextRequest) => {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const { documentTitle, description } = await request.json();
+    const { documentTitle } = await request.json();
 
-    if (!documentTitle || !description)
+    if (!documentTitle)
       return new NextResponse("Some Fields are missing", { status: 400 });
 
     const newDocument = await Document.create({
       documentTitle: documentTitle,
-      description: description,
       user: session.user.id,
     });
 

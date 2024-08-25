@@ -19,19 +19,16 @@ interface NewDocumentModalProps {
 
 const NewDocumentModal = ({ onCreate }: NewDocumentModalProps) => {
   const [documentTitle, setDocumentTitle] = useState("");
-  const [description, setDescription] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/v1/document", {
         documentTitle: documentTitle,
-        description: description,
       });
       if (response.status === 201) {
         onCreate(response.data.newDocument);
         setDocumentTitle("");
-        setDescription("");
       }
     } catch (error) {
       console.error(error);
@@ -63,13 +60,6 @@ const NewDocumentModal = ({ onCreate }: NewDocumentModalProps) => {
             className="input"
             value={documentTitle}
             onChange={(e) => setDocumentTitle(e.target.value)}
-            required
-          />
-          <label>Description</label>
-          <textarea
-            className="input"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
             required
           />
           <DialogClose asChild>

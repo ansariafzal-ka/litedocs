@@ -29,7 +29,7 @@ const DocumentCard = ({
   return (
     <div className="w-full p-5 glassmorphism flex justify-between items-center gap-5 rounded-md">
       <Link
-        href="/documents/123"
+        href={`/documents/${id}`}
         className="w-full flex justify-start items-center gap-2"
       >
         <img

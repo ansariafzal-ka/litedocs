@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 interface DocumentProps {
   _id: string;
   documentTitle: string;
-  description: string;
   user: string;
   createdAt: Date;
 }
@@ -59,7 +58,7 @@ const page = () => {
             />
           ))
         ) : (
-          <></>
+          <p>No Documents Found</p>
         )}
       </div>
     </main>

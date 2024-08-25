@@ -7,9 +7,10 @@ import ReactQuill from "react-quill";
 
 interface EditorProps {
   onChange: (content: string) => void;
+  contentValue: string;
 }
 
-const Editor: React.FC<EditorProps> = ({ onChange }) => {
+const Editor: React.FC<EditorProps> = ({ onChange, contentValue }) => {
   var modules = {
     toolbar: [
       [{ size: ["small", false, "large", "huge"] }],
@@ -97,6 +98,7 @@ const Editor: React.FC<EditorProps> = ({ onChange }) => {
           theme="snow"
           modules={modules}
           formats={formats}
+          value={contentValue}
           onChange={handleContentChange}
           className="h-[400px] md:h-[500px]"
         ></ReactQuill>
